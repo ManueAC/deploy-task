@@ -9,30 +9,36 @@ export const HeaderApp = () => {
     <>
       <Box bgcolor=" #CCFFF1 ">
         <Grid container>
-          <Grid item md={1}></Grid>
-          <Grid item md={9}>
-            <Box bgcolor="#CCFFF1">
-              <Typography
-                align="center"
-                style={{
-                  color: "#424242",
-                  paddingTop: 12,
-                  paddingBottom: 8,
-                  fontSize: 48,
-                }}
-              >
-                Web's Tasks
-              </Typography>
-            </Box>
+          <Grid item md={12}>
+            <Grid container direction="row" justifyContent="center" alignItems="flex-end">
+              <Grid item md={1}></Grid>
+              <Grid item md={9}>
+                <Box bgcolor="#CCFFF1">
+                  <Typography
+                    align="center"
+                    style={{
+                      color: "#424242",
+                      paddingTop: 12,
+                      paddingBottom: 8,
+                      fontSize: 48,
+                    }}
+                  >
+                    Web's Tasks
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item md={1}>
+                <Button size="large">
+                  <MeetingRoomIcon
+                    fontSize="large"
+                    style={{ color: "#424242" }}
+                  />
+                </Button>
+              </Grid>
+            </Grid>
           </Grid>
-          <Grid item md={1}>
-            <Button size="large">
-              <MeetingRoomIcon fontSize="large" style={{ color: "#424242" }} />
-            </Button>
-          </Grid>
-
-          <Grid container direction="row" justifyContent="center" item md={12}>
-            <Grid container md={2} justifyContent="center">
+          <Grid item md={12}>
+            <Grid container direction="row" justifyContent="center">
               <BtnResumen />
               <BtnNewTask />
             </Grid>

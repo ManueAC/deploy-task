@@ -1,7 +1,12 @@
 import { TaskType, UserType } from "./types";
 import { TASKS_LIST_QRY, USER_LIST_QR } from "../queries/index";
 import { client } from "../../shared/api/index";
-import { TASK_CREATE_MUT, TASK_STATUS_MUT, TASK_UPDATE_MUT } from "../mutations";
+import {
+  TASK_CREATE_MUT,
+  TASK_DELETE_MUT,
+  TASK_STATUS_MUT,
+  TASK_UPDATE_MUT,
+} from "../mutations";
 
 export const getTaskAction = async (
   callback: (data: TaskType[]) => void
@@ -64,12 +69,14 @@ export const updateTaskAction = async (
   }
 };
 
-export const deleteTaskAction = async (id: string): Promise<void> => {
+export const deleteTaskAction = async (taskId: string): Promise<void> => {
   try {
     const { data } = await client.mutate({
-      mutation: TASK_CREATE_MUT,
+      mutation: TASK_DELETE_MUT,
       variables: {
-        id,
+        data: {
+          id: taskId,
+        },
       },
     });
     console.log(data);

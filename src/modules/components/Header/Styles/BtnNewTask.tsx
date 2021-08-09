@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 
 const btnNewTk = makeStyles({
   root: {
@@ -12,7 +12,7 @@ export const BtnNewTask = () => {
   const classes = btnNewTk();
   return (
     <Button className={classes.root} href="/tasks/new">
-      New Task
+      <Typography component="h4" >New Task</Typography>
     </Button>
   );
 };
