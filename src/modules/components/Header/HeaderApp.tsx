@@ -3,24 +3,21 @@ import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import { BtnNewTask } from "./Styles/BtnNewTask";
-import { BtnResumen } from "./Styles/BtnResumen";
-
 const ViewStyles = makeStyles({
   root: {
     background: "#E9FCFF",
     borderRadius: "5px 5px 0px 0px",
   },
   font: {
-    fontFamily: "Montserrat 600",
-    fontSize: "13px",
+    fontFamily: "Abel",
+    fontSize: "15px",
     letterSpacing: "3px",
     fontWeight: "bold",
+    color: "grey",
   },
 });
 
 export const HeaderApp = () => {
-  // console.log(this.prop.styles)
   const classes = ViewStyles();
   const [colourA, setColourA] = useState("");
   const [colourB, setColourB] = useState("");
@@ -33,10 +30,14 @@ export const HeaderApp = () => {
     history.push("/");
   };
   const stablish = () => {
-    window.location.pathname === "/" ? setColourA("#E9FCFF") : setColourA("#CFFCFF");
-    window.location.pathname === "/tasks/new" ? setColourB("#E9FCFF") : setColourB("#CFFCFF");
-  }
-  // if (window.location.pathname === '/tasks/new') setColour("#E9FCFF");
+    window.location.pathname === "/"
+      ? setColourA("#E9FCFF")
+      : setColourA("#CFFCFF");
+    window.location.pathname === "/tasks/new"
+      ? setColourB("#E9FCFF")
+      : setColourB("#CFFCFF");
+  };
+
   return (
     <>
       <Box bgcolor=" #CCFFF1 ">
@@ -58,7 +59,7 @@ export const HeaderApp = () => {
                       paddingTop: 12,
                       paddingBottom: 8,
                       fontSize: 48,
-                      fontFamily: "Quicksand 500"
+                      fontFamily: "Abel",
                     }}
                   >
                     Web's Tasks
@@ -77,10 +78,12 @@ export const HeaderApp = () => {
           </Grid>
           <Grid item md={12}>
             <Grid container direction="row" justifyContent="center">
-              <Button 
-                // className={classes.root}
-                // href="/"
-                style={{ backgroundColor: colourA, borderRadius: "5px 5px 0px 0px" }}
+              <Button
+                style={{
+                  backgroundColor: colourA,
+                  borderRadius: "5px 5px 0px 0px",
+                  color: "grey",
+                }}
                 onClick={() => {
                   redirectRes();
                   stablish();
@@ -91,12 +94,14 @@ export const HeaderApp = () => {
                 </Typography>
               </Button>
               <Button
-                
                 onClick={() => {
                   redirectNew();
                   stablish();
                 }}
-                style={{ backgroundColor: colourB, borderRadius: "5px 5px 0px 0px"}}
+                style={{
+                  backgroundColor: colourB,
+                  borderRadius: "5px 5px 0px 0px",
+                }}
               >
                 <Typography variant="subtitle2" className={classes.font}>
                   New Task

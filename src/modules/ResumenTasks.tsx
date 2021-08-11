@@ -31,12 +31,12 @@ const styles = makeStyles({
     fontSize: "10px",
   },
   ftp: {
-    color: "#424242"
+    color: "#424242",
   },
   fts: {
     color: "#616161",
-    fontFamily: "Montserrat 300"
-  }
+    fontFamily: "Montserrat 300",
+  },
 });
 
 export const ResumenTasks = () => {
@@ -82,11 +82,7 @@ export const ResumenTasks = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <IconButton
-             onClick={() =>
-              window.location.reload()
-            }
-          >
+          <IconButton onClick={() => window.location.reload()}>
             <RefreshIcon />
           </IconButton>
           <Typography
@@ -118,7 +114,6 @@ export const ResumenTasks = () => {
                 <ListItem key={task.id} button>
                   <Checkbox
                     key={i}
-                    // name="taskCheck"
                     checked={task.taskCheck}
                     onChange={() => {
                       if (task.id)
