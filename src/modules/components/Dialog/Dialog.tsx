@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       "& .MuiTextField-root": {
         margin: theme.spacing(1),
-        width: "25ch",
+        width: "30%",
       },
     },
   })
@@ -76,7 +76,7 @@ export const DialogView: React.FunctionComponent<DialogViewProps> = ({
   return (
     <div>
       <Dialog open={open} onClose={onClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">Edit obligation</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
@@ -115,7 +115,8 @@ export const DialogView: React.FunctionComponent<DialogViewProps> = ({
 
 
           <TextField
-            className={classes.root}
+            // className={classes.root}
+            style={{width: "100%"}}
             id="demo-simple-select"
             select
             label="Users"

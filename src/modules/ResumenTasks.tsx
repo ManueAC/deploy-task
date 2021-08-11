@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Checkbox,
   Divider,
   Grid,
@@ -9,6 +10,7 @@ import {
   ListItemText,
   Typography,
 } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import { useEffect, useState } from "react";
 import EditIcon from "@material-ui/icons/Edit";
 import ClearIcon from "@material-ui/icons/Clear";
@@ -20,8 +22,22 @@ import {
   statusTaskAction,
 } from "./components/actions";
 import { DialogView } from "./components/Dialog/Dialog";
+import RefreshIcon from "@material-ui/icons/Refresh";
 
-
+const styles = makeStyles({
+  btnRfrs: {
+    color: "#9e9e9e",
+    margin: "-1% auto 4% auto",
+    fontSize: "10px",
+  },
+  ftp: {
+    color: "#424242"
+  },
+  fts: {
+    color: "#616161",
+    fontFamily: "Montserrat 300"
+  }
+});
 
 export const ResumenTasks = () => {
   const initialTask: TaskType = {
@@ -42,24 +58,46 @@ export const ResumenTasks = () => {
     setOpenDialogTask(false);
     setTaskData(initialTask);
   };
+
   const callback = (data: TaskType[]): void => {
     setTasks(data);
+    console.log(data);
   };
-
   const obtenerTareas = () => {
     getTaskAction(callback);
   };
-
   useEffect(() => {
     obtenerTareas();
   }, []);
 
-  const taskFilters = tasks.filter((task) => task.taskCheck === true);
   const taskFiltersFalse = tasks.filter((task) => task.taskCheck === false);
-
+  const taskFilters = tasks.filter((task) => task.taskCheck === true);
+  const classes = styles();
   return (
     <>
-      <Box margin="9% auto">
+      <Box margin="2% auto">
+        <Grid
+          container
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <IconButton
+             onClick={() =>
+              window.location.reload()
+            }
+          >
+            <RefreshIcon />
+          </IconButton>
+          <Typography
+            variant="caption"
+            display="block"
+            className={classes.btnRfrs}
+          >
+            REFRESH
+          </Typography>
+        </Grid>
+
         <Grid
           container
           direction="row"
@@ -71,14 +109,16 @@ export const ResumenTasks = () => {
             margin="0px 20px 0px auto"
             style={{ borderColor: "grey" }}
           >
-            <Typography variant="h4" align="center">
+            <Typography variant="h4" align="center" className={classes.fts}>
               Current tasks
               <Divider style={{ margin: "3% 8% 2% 6%" }} />
             </Typography>
             <List style={{ marginLeft: "2%", marginRight: "4%" }}>
-              {taskFiltersFalse.map((task) => (
+              {taskFiltersFalse.map((task, i) => (
                 <ListItem key={task.id} button>
                   <Checkbox
+                    key={i}
+                    // name="taskCheck"
                     checked={task.taskCheck}
                     onChange={() => {
                       if (task.id)
@@ -110,6 +150,10 @@ export const ResumenTasks = () => {
                   <IconButton
                     onClick={() => {
                       if (task.id) deleteTaskAction(task.id);
+                      const newTasks = [...taskFiltersFalse];
+                      newTasks.splice(i, 1);
+                      const filtrados = newTasks.concat(taskFilters);
+                      setTasks(filtrados);
                     }}
                   >
                     <ClearIcon />
@@ -119,7 +163,7 @@ export const ResumenTasks = () => {
             </List>
           </Box>
           <Grid item md={5} style={{ paddingRight: "13%" }}>
-            <Typography variant="h4" align="center">
+            <Typography variant="h4" align="center" className={classes.fts}>
               Status
               <Divider style={{ margin: "5% 8% 2% 8%" }} />
             </Typography>
