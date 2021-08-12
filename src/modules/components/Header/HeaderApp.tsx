@@ -2,6 +2,7 @@ import { Box, Button, Grid, makeStyles, Typography } from "@material-ui/core";
 import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const ViewStyles = makeStyles({
   root: {
@@ -18,6 +19,7 @@ const ViewStyles = makeStyles({
 });
 
 export const HeaderApp = () => {
+  const {logout} = useAuth0();
   const classes = ViewStyles();
   const [colourA, setColourA] = useState("");
   const [colourB, setColourB] = useState("");
@@ -71,6 +73,7 @@ export const HeaderApp = () => {
                   <MeetingRoomIcon
                     fontSize="large"
                     style={{ color: "#616161" }}
+                    onClick={() => logout()}
                   />
                 </Button>
               </Grid>
