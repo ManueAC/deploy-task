@@ -38,9 +38,9 @@ function App() {
             </>
           ) }
           <Button onClick={() => loginWithRedirect()}>
-            Auth0 | Redirect to Login
+            Login
           </Button>
-          <Button onClick={() => logout()}>Auth0 | Log-Out </Button>
+          <Button onClick={() => logout()}>Logout</Button>
         </Fragment>
       </Router>
     </ApolloProvider>
