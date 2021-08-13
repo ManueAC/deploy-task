@@ -11,8 +11,7 @@ import { Button, Container } from "@material-ui/core";
 import HeaderApp from "./modules/components/Header/HeaderApp";
 import { client } from "./shared/api";
 import LoginView from "./modules/Auth/LoginView";
-import { useAuth0, User } from "@auth0/auth0-react";
-import auth from "./shared/auth";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
   const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
@@ -32,14 +31,12 @@ function App() {
                   <Route exact path="/" component={ResumenTasks} />
                   <Route exact path="/tasks/new" component={NewTask} />
                   {/* 8Base */}
-                  <Route exact path="/auth/callback" component={ResumenTasks} />
+                  {/* <Route exact path="/auth/callback" component={ResumenTasks} /> */}
                   {/* <Route exact path="/logout" component={Logout} /> */}
                 </Switch>
               </Container>
             </>
-          ) /* : (
-            loginWithRedirect()
-          ) */}
+          ) }
           <Button onClick={() => loginWithRedirect()}>
             Auth0 | Redirect to Login
           </Button>

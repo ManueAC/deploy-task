@@ -11,6 +11,6 @@ export default Auth.createClient(
     domain: 'dev--awjecdv.us.auth0.com',
     clientId: 'VjauOM0zdsHUpNvWziKOuPDyXM7PsxSx',
     redirectUri: `${window.location.origin}/auth/callback`,
-    logoutRedirectUri: `${window.location.origin}/logout`,
+    logoutRedirectUri: `${window.location.origin}`,
   },
 );
