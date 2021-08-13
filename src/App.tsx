@@ -32,9 +32,9 @@ function App() {
             </>
           
           ) 
-          : <Route exact path="/logout" component={LogoutView} /> 
+          : <LogoutView />
           }
-          <LogoutView />
+          
         </Fragment>
       </Router>
     </ApolloProvider>
