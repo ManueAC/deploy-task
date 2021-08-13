@@ -19,7 +19,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <Fragment>
-          <Typography>Text Helper</Typography>
+          
           {isAuthenticated ? (
             <>
               <HeaderApp />
