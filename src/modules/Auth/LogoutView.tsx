@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/styles";
 import { useAuth0 } from "@auth0/auth0-react";
 import * as React from "react";
 
-export interface LoginViewProps {}
+
 
 const LoginStyles = makeStyles({
   fontp: {
@@ -37,7 +37,7 @@ const LoginStyles = makeStyles({
   }
 });
 
-const LoginView: React.FC<LoginViewProps> = () => {
+const LogoutView = () => {
   const classes = LoginStyles();
   const { loginWithRedirect } = useAuth0();
   return (
@@ -73,4 +73,4 @@ const LoginView: React.FC<LoginViewProps> = () => {
   );
 };
 
-export default LoginView;
+export default LogoutView;
