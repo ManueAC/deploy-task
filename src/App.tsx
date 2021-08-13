@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import NewTask from "./modules/components/Tab/NewTask";
 import { ResumenTasks } from "./modules/ResumenTasks";
-import { Container, Typography } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import HeaderApp from "./modules/components/Header/HeaderApp";
 import { client } from "./shared/api";
 import LogoutView from "./modules/Auth/LogoutView";
@@ -30,11 +30,10 @@ function App() {
                 </Switch>
               </Container>
             </>
-          
           ) 
           : <LogoutView />
           }
-          
+          <Route exact path="/logout" component={LogoutView} /> 
         </Fragment>
       </Router>
     </ApolloProvider>
