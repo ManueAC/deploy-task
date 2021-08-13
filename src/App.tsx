@@ -11,30 +11,39 @@ import { Button, Container } from "@material-ui/core";
 import HeaderApp from "./modules/components/Header/HeaderApp";
 import { client } from "./shared/api";
 import LoginView from "./modules/Auth/LoginView";
-import { useAuth0 } from "@auth0/auth0-react";
-// import { IAuthClient } from ''
-// import { AuthCallback } from './modules/auth/index';
+import { useAuth0, User } from "@auth0/auth0-react";
+import auth from "./shared/auth";
 
 function App() {
-  const { loginWithRedirect, isAuthenticated } = useAuth0();
+  const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
+
   return (
     <ApolloProvider client={client}>
       <Router>
         <Fragment>
-          <LoginView />
+
           {isAuthenticated && (
             <>
               <HeaderApp />
               <Container maxWidth="lg">
                 <Switch>
+                  <Route exact path="/login" component={LoginView} />
+
                   <Route exact path="/" component={ResumenTasks} />
                   <Route exact path="/tasks/new" component={NewTask} />
-                  <Route exact path="/login" component={LoginView} />
+                  {/* 8Base */}
+                  <Route exact path="/auth/callback" component={ResumenTasks} />
+                  {/* <Route exact path="/logout" component={Logout} /> */}
                 </Switch>
               </Container>
             </>
-          )}
-          <Button onClick={() => loginWithRedirect()}>Redirect to Login</Button>
+          ) /* : (
+            loginWithRedirect()
+          ) */}
+          <Button onClick={() => loginWithRedirect()}>
+            Auth0 | Redirect to Login
+          </Button>
+          <Button onClick={() => logout()}>Auth0 | Log-Out </Button>
         </Fragment>
       </Router>
     </ApolloProvider>

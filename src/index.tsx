@@ -4,15 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Auth0Provider } from "@auth0/auth0-react";
-import {
-  REACT_APP_AUTH0_DOMAIN,
-  REACT_APP_AUTH0_CLIENT_ID,
-} from "./shared/constants/environment-constants";
 
-const domain = process.env.REACT_APP_AUTH0_DOMAIN as string;
-const clientid = process.env.REACT_APP_AUTH0_CLIENT_ID as string;
-// const domain
-console.log(domain, clientid);
 
 ReactDOM.render(
   <React.StrictMode>
