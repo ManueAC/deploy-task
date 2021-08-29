@@ -21,8 +21,8 @@ const ViewStyles = makeStyles({
 export const HeaderApp = () => {
   const {logout} = useAuth0();
   const classes = ViewStyles();
-  const [colourA, setColourA] = useState("");
-  const [colourB, setColourB] = useState("");
+  const [colourA, setColourA] = useState("#E9FCFF");
+  const [colourB, setColourB] = useState("#CFFCFF");
 
   const history = useHistory();
   const redirectNew = () => {

@@ -14,6 +14,7 @@ export const getTaskAction = async (
   try {
     const { data } = await client.query({
       query: TASKS_LIST_QRY,
+      fetchPolicy: "network-only"
     });
     console.log(data);
     callback(data.tasksList.items);
@@ -42,7 +43,8 @@ export const createTaskAction = async (
 
 export const updateTaskAction = async (
   inputData: TaskType,
-  filter: string
+  filter: string,
+  obtenerTareas: () => void
 ): Promise<void> => {
   const { taskTitle, taskUser, taskDscr, taskCheck, taskStart, taskEnd } =
     inputData;
@@ -64,6 +66,7 @@ export const updateTaskAction = async (
       },
     });
     console.log(data);
+    obtenerTareas();
   } catch (err) {
     console.log(err);
   }

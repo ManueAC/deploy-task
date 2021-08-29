@@ -68,7 +68,7 @@ export const ResumenTasks = () => {
   };
   useEffect(() => {
     obtenerTareas();
-  }, []);
+  }, [tasks]);
 
   const taskFiltersFalse = tasks.filter((task) => task.taskCheck === false);
   const taskFilters = tasks.filter((task) => task.taskCheck === true);
@@ -185,6 +185,7 @@ export const ResumenTasks = () => {
         open={openDialogTask}
         onClose={onCloseDialogTask}
         taskData={taskData}
+        obtenerTareas={obtenerTareas}
       />
     </>
   );

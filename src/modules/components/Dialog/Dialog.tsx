@@ -14,6 +14,7 @@ export interface DialogViewProps {
   open: boolean;
   onClose: () => void;
   taskData: TaskType;
+  obtenerTareas: () => void;
 }
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -29,6 +30,7 @@ export const DialogView: React.FunctionComponent<DialogViewProps> = ({
   open,
   onClose,
   taskData,
+  obtenerTareas
 }) => {
   const [task, setNewTask] = useState(taskData);
 
@@ -64,7 +66,7 @@ export const DialogView: React.FunctionComponent<DialogViewProps> = ({
       taskUser: user,
     };
     if (task.id) {
-      updateTaskAction(newTask, task.id);
+      updateTaskAction(newTask, task.id, obtenerTareas);
     }
     onClose();
   };
