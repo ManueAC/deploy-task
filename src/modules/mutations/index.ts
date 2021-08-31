@@ -68,3 +68,14 @@ export const TASK_STATUS_MUT = gql`
     }
   }
 `;
+
+export const CF_CHECK_MUT = gql`
+  mutation CFTest($filter: String, $status: Boolean) {
+    checkStatus(id: $filter, status: $status) {
+      items {
+        id
+        taskCheck
+      }
+    }
+  }
+`;

@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Checkbox,
   Divider,
   Grid,
@@ -48,7 +47,8 @@ export const ResumenTasks = () => {
     taskStart: "",
     taskEnd: "",
   };
-
+  console.log(window.location);
+  
   const [tasks, setTasks] = useState<TaskType[]>([]);
   const [openDialogTask, setOpenDialogTask] = useState(false);
   const [taskData, setTaskData] = useState<TaskType>(initialTask);
@@ -73,6 +73,7 @@ export const ResumenTasks = () => {
   const taskFiltersFalse = tasks.filter((task) => task.taskCheck === false);
   const taskFilters = tasks.filter((task) => task.taskCheck === true);
   const classes = styles();
+  
   return (
     <>
       <Box margin="2% auto">
@@ -187,6 +188,7 @@ export const ResumenTasks = () => {
         taskData={taskData}
         obtenerTareas={obtenerTareas}
       />
+      
     </>
   );
 };

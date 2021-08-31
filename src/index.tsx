@@ -13,6 +13,7 @@ ReactDOM.render(
       clientId="VjauOM0zdsHUpNvWziKOuPDyXM7PsxSx"
       redirectUri={window.location.origin}
     >
+      {console.log(window.location)}
       <App />
     </Auth0Provider>
   </React.StrictMode>,

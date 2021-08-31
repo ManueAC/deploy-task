@@ -97,6 +97,7 @@ export const HeaderApp = () => {
                 </Typography>
               </Button>
               <Button
+                id="btn-new"
                 onClick={() => {
                   redirectNew();
                   stablish();

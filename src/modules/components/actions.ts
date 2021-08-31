@@ -2,6 +2,7 @@ import { TaskType, UserType } from "./types";
 import { TASKS_LIST_QRY, USER_LIST_QR } from "../queries/index";
 import { client } from "../../shared/api/index";
 import {
+  CF_CHECK_MUT,
   TASK_CREATE_MUT,
   TASK_DELETE_MUT,
   TASK_STATUS_MUT,
@@ -95,18 +96,10 @@ export const statusTaskAction = async (
 ): Promise<void> => {
   try {
     const { data } = await client.mutate({
-      mutation: TASK_STATUS_MUT,
+      mutation: CF_CHECK_MUT,
       variables: {
-        filter: {
-          id: {
-            equals: id,
-          },
-        },
-        status: {
-          taskCheck: {
-            set: status,
-          },
-        },
+        filter: id,
+        status: status,
       },
     });
     console.log(data);

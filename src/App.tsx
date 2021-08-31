@@ -34,6 +34,7 @@ function App() {
           : <LogoutView />
           }
           <Route exact path="/logout" component={LogoutView} /> 
+          {console.log(window.location)}
         </Fragment>
       </Router>
     </ApolloProvider>

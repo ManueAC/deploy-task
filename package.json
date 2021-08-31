@@ -7,6 +7,8 @@
     "@8base/auth": "^1.4.5",
     "@apollo/client": "^3.4.4",
     "@auth0/auth0-react": "^1.6.0",
+    "@cypress/react": "^5.9.4",
+    "@cypress/webpack-dev-server": "^1.4.0",
     "@date-io/date-fns": "^1.3.13",
     "@date-io/luxon": "^1.3.13",
     "@date-io/moment": "^1.3.13",
@@ -23,6 +25,7 @@
     "@types/react-dom": "^17.0.9",
     "apollo-boost": "^0.4.9",
     "app-provider": "^1.1.2",
+    "cypress-react-unit-test": "^4.17.2",
     "date-fns": "^2.23.0",
     "graphql": "^15.5.1",
     "graphql-tag": "^2.12.5",
@@ -43,12 +46,14 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "react-scripts start"
+    "dev": "react-scripts start",
+    "e2e": "cypress open"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:cypress/recommended"
     ]
   },
   "browserslist": {
@@ -66,6 +71,8 @@
   "devDependencies": {
     "@types/graphql": "^14.5.0",
     "@types/react-router-dom": "^5.1.8",
-    "apollo": "^2.33.4"
+    "apollo": "^2.33.4",
+    "cypress": "^8.3.1",
+    "eslint-plugin-cypress": "^2.11.3"
   }
 }
