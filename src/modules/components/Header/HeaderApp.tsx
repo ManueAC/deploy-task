@@ -98,6 +98,7 @@ export const HeaderApp = () => {
               </Button>
               <Button
                 id="btn-new"
+                //Test E2E
                 onClick={() => {
                   redirectNew();
                   stablish();
