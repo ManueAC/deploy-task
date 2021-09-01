@@ -11,10 +11,6 @@ describe("Once A Upon A Time in... Load/Login", () => {
   });
 
   it("Log in in the app", () => {
-    console.log(window.location);
-    // cy.get("#username").click()
-    // cy.get("#password").select(options.password);
-    // cy.get('.c1f2fb00e > .c8e21b80b').click();
     const options = {
       method: 'POST',
       url: Cypress.env('url'),

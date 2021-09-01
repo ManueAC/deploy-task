@@ -16,13 +16,7 @@ function App() {
   const { isAuthenticated } = useAuth0();
 
   return (
-    <Auth0Provider
-      domain="dev--awjecdv.us.auth0.com"
-      clientId="VjauOM0zdsHUpNvWziKOuPDyXM7PsxSx"
-      redirectUri={window.location.origin}
-    >
-      {console.log(window.location)}
-
+   
       <ApolloProvider client={client}>
         <Router>
           <Fragment>
@@ -43,7 +37,7 @@ function App() {
           </Fragment>
         </Router>
       </ApolloProvider>
-    </Auth0Provider>
+    
   );
 }
 
