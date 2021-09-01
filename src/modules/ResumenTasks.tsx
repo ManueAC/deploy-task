@@ -78,23 +78,6 @@ export const ResumenTasks = () => {
   return (
     <>
       <Box margin="2% auto">
-        <Grid
-          container
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <IconButton onClick={() => window.location.reload()}>
-            <RefreshIcon />
-          </IconButton>
-          <Typography
-            variant="caption"
-            display="block"
-            className={classes.btnRfrs}
-          >
-            REFRESH
-          </Typography>
-        </Grid>
 
         <Grid
           container
@@ -111,7 +94,7 @@ export const ResumenTasks = () => {
               Current tasks
               <Divider style={{ margin: "3% 8% 2% 6%" }} />
             </Typography>
-            <List style={{ marginLeft: "2%", marginRight: "4%" }}>
+            <List id="tasks-list-display" style={{ marginLeft: "2%", marginRight: "4%" }}>
               {taskFiltersFalse.map((task, i) => (
                 <ListItem key={task.id} button>
                   <Checkbox

@@ -26,17 +26,16 @@ describe("Once A Upon A Time in... Load/Login", () => {
     };
     cy.get(".MuiButton-label").click();
     cy.request(options);
-  })
+  });
 
-  it("New task: check for each field contains data, then creates it", () => {
-    const form = ':nth-child(1) > .MuiFormControl-root';
-    const btnSub = '.makeStyles-root-24 > :nth-child(1) > .MuiGrid-container > :nth-child(1)';
-    const tName = ':nth-child(1) > .MuiFormControl-root > .MuiInputBase-root > #standard-full-width';
-
+  it("Display quantity", () => {
+    cy.get("#btn-new").click();
+    cy.get("#standard-full-width").type("From E2E test");
+    
+    cy.get("#standard-basic").type("")
     
     
-    // cy.get(form)
-    // expect(tName[value]).not.equal('');
-    // cy.get(btnSub);
-})
+  });
+
+
 });
