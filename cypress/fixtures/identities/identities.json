@@ -1,0 +1,6 @@
+{
+  "btn-new": "#btn-new",
+  "inputTitle": "#standard-full-width",
+  "inputStart": "#standard-basic",
+  "inputEnd": ".MuiGrid-container > .MuiFormControl-root > .MuiInputBase-root > #standard-basic"
+}

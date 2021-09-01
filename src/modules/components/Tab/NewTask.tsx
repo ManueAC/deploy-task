@@ -87,9 +87,7 @@ export const NewTask = () => {
               <IconButton onClick={onSubmit}>
                 <CheckIcon />
               </IconButton>
-              <IconButton>
-                <ClearIcon />
-              </IconButton>
+              
             </Grid>
           </Grid>
           <Grid container direction="row">

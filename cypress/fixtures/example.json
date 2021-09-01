@@ -1,5 +1,9 @@
 {
   "name": "Using fixtures to represent data",
   "email": "hello@cypress.io",
-  "body": "Fixtures are a great way to mock data for responses to routes"
+  "body": "Fixtures are a great way to mock data for responses to routes",
+  "btn-new": "#btn-new",
+  "input-new-title": "#standard-full-width",
+  "input-new-start": "#standard-basic",
+  "input-new-end": ".MuiGrid-container > .MuiFormControl-root > .MuiInputBase-root > #standard-basic"
 }

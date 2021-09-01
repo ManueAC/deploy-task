@@ -77,7 +77,7 @@ export const ResumenTasks = () => {
   
   return (
     <>
-      <Box margin="5% auto">
+      <Box margin="7% auto">
 
         <Grid
           container
