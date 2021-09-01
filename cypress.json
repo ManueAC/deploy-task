@@ -3,10 +3,11 @@
   "integrationFolder": "./cypress/integration",
   "env": {
     "url": "dev--awjecdv.us.auth0.com",
-    "email": "macpmaxel@hotmail.com",
+    "username": "macpmaxel@hotmail.com",
     "password": "45587291Qw!!",
     "audience": "dev--awjecdv.us.auth0.com",
-    "clien_id": "VjauOM0zdsHUpNvWziKOuPDyXM7PsxSx",
+    "client_id": "VjauOM0zdsHUpNvWziKOuPDyXM7PsxSx",
     "client_secret": "mf44vyCNl6ZtMftTHS1ia5UrEKXyvJOuysecyRa9vV7ckhnCiyBt49tLQ_hCKGKa"
+    
   }
 }

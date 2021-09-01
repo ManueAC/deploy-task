@@ -49,7 +49,7 @@ export const ResumenTasks = () => {
     taskEnd: "",
   };
   console.log(window.location);
-  
+
   const [tasks, setTasks] = useState<TaskType[]>([]);
   const [openDialogTask, setOpenDialogTask] = useState(false);
   const [taskData, setTaskData] = useState<TaskType>(initialTask);
@@ -74,27 +74,31 @@ export const ResumenTasks = () => {
   const taskFiltersFalse = tasks.filter((task) => task.taskCheck === false);
   const taskFilters = tasks.filter((task) => task.taskCheck === true);
   const classes = styles();
-  
+
   return (
     <>
       <Box margin="7% auto">
-
         <Grid
           container
           direction="row"
-          justifyContent="flex-end"
-          alignItems="stretch"
+          justifyContent="center"
+          alignItems="flex-start"
         >
-          <Box
-            borderRight={1}
-            margin="0px 20px 0px auto"
+          <Grid
+            // borderRight={1}
+            item
+            md={6}
+            // margin="0px auto 0px auto"
             style={{ borderColor: "grey" }}
           >
             <Typography variant="h4" align="center" className={classes.fts}>
               Current tasks
               <Divider style={{ margin: "3% 8% 2% 6%" }} />
             </Typography>
-            <List id="tasks-list-display" style={{ marginLeft: "2%", marginRight: "4%" }}>
+            <List
+              id="tasks-list-display"
+              style={{ marginLeft: "2%", marginRight: "4%" }}
+            >
               {taskFiltersFalse.map((task, i) => (
                 <ListItem key={task.id} button>
                   <Checkbox
@@ -110,12 +114,21 @@ export const ResumenTasks = () => {
                     }}
                   />
                   <ListItemText
-                    primary={task.taskTitle}
+                    disableTypography
+                    primary={
+                      <Typography style={{ fontFamily: "Poppins" }}>
+                        {task.taskTitle}
+                      </Typography>
+                    }
                     secondary={task.taskUser}
                   />
                   <Typography
                     noWrap
-                    style={{ marginLeft: "6%", marginRight: "2%" }}
+                    style={{
+                      marginLeft: "6%",
+                      marginRight: "2%",
+                      fontFamily: "Roboto",
+                    }}
                   >
                     {task.taskDscr}
                   </Typography>
@@ -141,8 +154,9 @@ export const ResumenTasks = () => {
                 </ListItem>
               ))}
             </List>
-          </Box>
-          <Grid item md={5} style={{ paddingRight: "13%" }}>
+          </Grid>
+          <Divider orientation="vertical" flexItem />
+          <Grid item md={3} /* style={{ paddingRight: "13%" }} */>
             <Typography variant="h4" align="center" className={classes.fts}>
               Status
               <Divider style={{ margin: "5% 8% 2% 8%" }} />
@@ -172,7 +186,6 @@ export const ResumenTasks = () => {
         taskData={taskData}
         obtenerTareas={obtenerTareas}
       />
-      
     </>
   );
 };
