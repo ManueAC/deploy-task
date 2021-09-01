@@ -49,12 +49,6 @@
     "dev": "react-scripts start",
     "e2e": "cypress open"
   },
-  "eslintConfig": {
-    "extends": [
-      
-      "plugin:cypress/recommended"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
