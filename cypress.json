@@ -1,15 +1,6 @@
 {
   "chromeWebSecurity": false,
-  "component": {
-    "testFiles": "**/*.test.{js,ts,jsx,tsx}",
-    "componentFolder": "./cypress/components"
-  },
-  "viewportWidth": 1000,
-  "viewportHeight": 700,
   "integrationFolder": "./cypress/integration",
-  "pluginsFile": "./cypress/plugins/index.js",
-  "supportFile": "./cypress/support/index.js",
-  "fixturesFolder": false,
   "env": {
     "url": "dev--awjecdv.us.auth0.com",
     "email": "macpmaxel@hotmail.com",
