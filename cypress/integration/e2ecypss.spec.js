@@ -4,10 +4,12 @@
 // If you're unfamiliar with how Cypress works,
 // check out the link below and learn how to write your first test:
 // https://on.cypress.io/writing-first-test
-const inputs = {
+const elements = {
   tabNew: "#btn-new",
   btnCreate:
     ".makeStyles-root-24 > :nth-child(1) > .MuiGrid-container > :nth-child(1)",
+  btnEdit:
+    ":nth-child(1) > :nth-child(4) > .MuiIconButton-label > .MuiSvgIcon-root",
   Title:
     ":nth-child(1) > .MuiFormControl-root > .MuiInputBase-root > #standard-full-width",
   Start: "#standard-basic",
@@ -15,6 +17,21 @@ const inputs = {
   Dscr: ":nth-child(4) > .MuiFormControl-root > .MuiInputBase-root > #standard-full-width",
   UserSl: "#demo-simple-select",
   User: `.MuiList-root > [tabindex="0"]`,
+  listDsply: "#tasks-list-display",
+  listItem: "#tasks-list-display > :nth-child(1)",
+  checked:
+    ":nth-child(1) > .PrivateSwitchBase-root-18 > .MuiIconButton-label > .PrivateSwitchBase-input-21",
+  update: {
+    title:
+      ".MuiDialogContent-root > :nth-child(1) > .MuiInputBase-root > .MuiInputBase-input",
+    start:
+      ":nth-child(1) > .MuiFormControl-root > .MuiInputBase-root > .MuiInputBase-input",
+    end: ".MuiGrid-container > :nth-child(2) > .MuiFormControl-root > .MuiInputBase-root > #name",
+    usersSlt: "#demo-simple-select",
+    user: `.MuiList-root > [tabindex="-1"]`,
+    dscr: ":nth-child(4) > .MuiInputBase-root > #name",
+    btnSave: ".MuiDialogActions-root > :nth-child(1) > .MuiButton-label",
+  },
 };
 
 describe("Once A Upon A Time in... Load/Login", () => {
@@ -38,43 +55,58 @@ describe("Once A Upon A Time in... Load/Login", () => {
     };
     cy.get(".MuiButton-label").click();
     cy.request(options);
-    cy.location('pathname', {timeout: 50000}).should('eq', '/');
-
-    
+    cy.location("pathname", { timeout: 50000 })
+      .should("eq", "/")
+      .then(() => {
+        if (!cy.contains("From E2E test")) {
+          cy.log("API's limit reached!. Retryng in 2min");
+          setTimeout(() => {
+            window.location.reload();
+          }, 121000);
+        }
+      });
   });
 
-  it("Create a task", () => {
-    cy.get(inputs.tabNew).click();
-    cy.location('pathname', {timeout: 50000}).should('eq', '/tasks/new');
-    cy.get(inputs.Title).type("From E2E test").should("have.value", "From E2E test")
-    cy.get(inputs.Start).type("2021-10-10").should("not.have.value", "")
-    cy.get(inputs.End).type("2021-10-10").should("not.have.value", "")
-    cy.get(inputs.Dscr).type("Descrip. From E2E Text Extra-Large Test To Test Grid").should("not.have.value", "")
-    cy.get(inputs.UserSl).click().should("have.lengthOf.at.least", 1);
-    cy.get(inputs.User).click().should("not.have.value", "");
+  // it("Create a task", () => {
+  //   cy.get(elements.tabNew).click();
+  //   cy.location('pathname', {timeout: 50000}).should('eq', '/tasks/new');
+  //   cy.get(elements.Title).type("From E2E test").should("have.value", "From E2E test")
+  //   cy.get(elements.Start).type("2021-10-10").should("not.have.value", "")
+  //   cy.get(elements.End).type("2021-10-10").should("not.have.value", "")
+  //   cy.get(elements.Dscr).type("Descrip. From E2E Text Extra-Large Test To Test Grid").should("not.have.value", "")
+  //   cy.get(elements.UserSl).click().should("have.lengthOf.at.least", 1);
+  //   cy.get(elements.User).click().should("not.have.value", "");
 
-    cy.get(inputs.btnCreate).click();
+  //   cy.get(elements.btnCreate).click();
 
-  });
+  // });
 
-  it("Check task created previously", () => {
-    
+  it("Search for task created previously", () => {
+    cy.location("pathname", { timeout: 50000 }).should("eq", "/");
     cy.contains("From E2E test");
   });
 
-  // it("Request", () => {
-  //   const requestData = {
-  //     method: "POST",
-  //     url: Cypress.env("REACT_APP_WORKSPACE_ENDPOINT"),
-  //     body: {
-  //       email: Cypress.env("email"),
-  //       password: Cypress.env("password"),
-  //       client_id: Cypress.env("REACT_APP_AUTH_CLIENT_ID")
-  //     }
-  //   };
-    
-  //   cy.request(requestData);
-  // });
+  it("Look for the status of a task", () => {
+    cy.location("pathname", { timeout: 50000 }).should("eq", "/");
+    cy.get(elements.checked).should("have.prop", "checked").should("be.false");
+  });
+
+  it("Update a task", () => {
+    cy.get(elements.btnEdit).click()
+    .get(elements.update.title).type("{selectAll}E2E Task Update").should("not.have.value", "")
+    .get(elements.update.start).type("2021-10-10").should("not.have.value", "")
+    .get(elements.update.end).type("2021-11-10").should("not.have.value", "")
+    .get(elements.update.usersSlt).click().should("have.lengthOf.at.least", 1)
+    .get(elements.update.user).click()
+    .get(elements.update.dscr).type("E2E Updated Description").should("not.have.value", "")
+
+    .get(elements.update.btnSave).click();
+
+  });
+
+  it("Mark a task as done!", () => {
+    cy.get(
+      "#tasks-list-display > :nth-child(1) > .PrivateSwitchBase-root-18 > .MuiIconButton-label > .PrivateSwitchBase-input-21"
+    ).click();
+  });
 });
-
-

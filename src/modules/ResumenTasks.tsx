@@ -93,11 +93,11 @@ export const ResumenTasks = () => {
           >
             <Typography variant="h4" align="center" className={classes.fts}>
               Current tasks
-              <Divider style={{ margin: "3% 8% 2% 6%" }} />
+              <Divider style={{ margin: "3% 5% 2% 4%" }} />
             </Typography>
             <List
               id="tasks-list-display"
-              style={{ marginLeft: "2%", marginRight: "4%" }}
+              style={{ margin: "0 auto"}}
             >
               {taskFiltersFalse.map((task, i) => (
                 <ListItem key={task.id} button>
@@ -156,10 +156,10 @@ export const ResumenTasks = () => {
             </List>
           </Grid>
           <Divider orientation="vertical" flexItem />
-          <Grid item md={3} /* style={{ paddingRight: "13%" }} */>
+          <Grid item md={3}>
             <Typography variant="h4" align="center" className={classes.fts}>
               Status
-              <Divider style={{ margin: "5% 8% 2% 8%" }} />
+              <Divider style={{ margin: "6% 8% 4% 8%" }} />
             </Typography>
             <List>
               {taskFilters.map(
