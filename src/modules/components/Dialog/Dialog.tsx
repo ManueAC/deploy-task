@@ -37,7 +37,7 @@ export const DialogView: React.FunctionComponent<DialogViewProps> = ({
   const [users, setUsers] = useState<UserType[]>([]);
   const [user, setUser] = useState(taskData.taskUser);
 
-  console.log(users);
+  // console.log(users);
 
   const callback = (dataUsers: UserType[]): void => {
     setUsers(dataUsers);

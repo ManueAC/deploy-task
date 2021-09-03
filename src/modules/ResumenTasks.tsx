@@ -48,7 +48,7 @@ export const ResumenTasks = () => {
     taskStart: "",
     taskEnd: "",
   };
-  console.log(window.location);
+  // console.log(window.location);
 
   const [tasks, setTasks] = useState<TaskType[]>([]);
   const [openDialogTask, setOpenDialogTask] = useState(false);
@@ -62,7 +62,7 @@ export const ResumenTasks = () => {
 
   const callback = (data: TaskType[]): void => {
     setTasks(data);
-    console.log(data);
+    // console.log(data);
   };
   const obtenerTareas = () => {
     getTaskAction(callback);

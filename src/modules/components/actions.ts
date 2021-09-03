@@ -17,7 +17,7 @@ export const getTaskAction = async (
       query: TASKS_LIST_QRY,
       fetchPolicy: "network-only"
     });
-    console.log(data);
+    // console.log(data);
     callback(data.tasksList.items);
   } catch (err) {
     console.log(err);
@@ -35,7 +35,7 @@ export const createTaskAction = async (
         input,
       },
     });
-    console.log(data);
+    // console.log(data);
     callback();
   } catch (err) {
     console.log(err);
@@ -66,7 +66,7 @@ export const updateTaskAction = async (
         },
       },
     });
-    console.log(data);
+    // console.log(data);
     obtenerTareas();
   } catch (err) {
     console.log(err);
@@ -83,7 +83,7 @@ export const deleteTaskAction = async (taskId: string): Promise<void> => {
         },
       },
     });
-    console.log(data);
+    // console.log(data);
   } catch (err) {
     console.log(err);
   }
@@ -102,7 +102,7 @@ export const statusTaskAction = async (
         status: status,
       },
     });
-    console.log(data);
+    // console.log(data);
     obtenerTareas();
   } catch (err) {
     console.log(err);
@@ -118,7 +118,7 @@ export const getUsersAction = async (
     const { data } = await client.query({
       query: USER_LIST_QR,
     });
-    console.log(data);
+    // console.log(data);
     callback(data.usersList.items);
   } catch (err) {
     console.log(err);
