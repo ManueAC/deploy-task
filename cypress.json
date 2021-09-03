@@ -1,6 +1,12 @@
 {
   "chromeWebSecurity": false,
   "integrationFolder": "./cypress/integration",
+  "component": {
+    "testFiles": "**/*.test.{js,ts,jsx,tsx}",
+    "componentFolder": "./cypress/components"
+  },
+  "viewportWidth": 1200,
+  "viewportHeight": 1000,
   "env": {
     "url": "dev--awjecdv.us.auth0.com",
     "username": "macpmaxel@hotmail.com",
@@ -8,6 +14,5 @@
     "audience": "dev--awjecdv.us.auth0.com",
     "client_id": "VjauOM0zdsHUpNvWziKOuPDyXM7PsxSx",
     "client_secret": "mf44vyCNl6ZtMftTHS1ia5UrEKXyvJOuysecyRa9vV7ckhnCiyBt49tLQ_hCKGKa"
-    
   }
 }

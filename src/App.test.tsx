@@ -1,9 +1,13 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { mount } from "@cypress/react";
+import { HeaderApp } from "./modules/components/Header/HeaderApp";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+it("renders HeaderApp", () => {
+  mount(<HeaderApp />);
+  cy.contains("Resumen").should("be.visible");
+  cy.contains("New Task").should("be.visible");
+
+  cy.get("#btn-new")
+    .should("contain", "New Task")
+    .get("#btn-new")
+    .should("have.a.prop", "style");
 });

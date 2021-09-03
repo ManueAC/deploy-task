@@ -7,7 +7,7 @@
 const elements = {
   tabNew: "#btn-new",
   btnCreate:
-    ".makeStyles-root-24 > :nth-child(1) > .MuiGrid-container > :nth-child(1)",
+    ":nth-child(1) > .MuiGrid-container > .MuiButtonBase-root",
   btnEdit:
     ":nth-child(1) > :nth-child(4) > .MuiIconButton-label > .MuiSvgIcon-root",
   Title:
@@ -31,64 +31,61 @@ const elements = {
     user: `.MuiList-root > [tabindex="-1"]`,
     dscr: ":nth-child(4) > .MuiInputBase-root > #name",
     btnSave: ".MuiDialogActions-root > :nth-child(1) > .MuiButton-label",
+    checking: "#tasks-list-display > :nth-child(1) > .PrivateSwitchBase-root-18 > .MuiIconButton-label > .PrivateSwitchBase-input-21"
   },
 };
 
 describe("Once A Upon A Time in... Load/Login", () => {
   it("Visits the site", () => {
     cy.visit("https://shrouded-lowlands-57716.herokuapp.com");
+  
   });
 
   it("Log in in the app", () => {
-    const options = {
-      method: "POST",
-      url: Cypress.env("url"),
-      body: {
-        grant_type: "password",
-        username: Cypress.env("username"),
-        password: Cypress.env("password"),
-        audience: Cypress.env("audience"),
-        scope: "openid profile email",
-        client_id: Cypress.env("client_id"),
-        client_secret: Cypress.env("client_secret"),
-      },
-    };
     cy.get(".MuiButton-label").click();
-    cy.request(options);
+
+    cy.get('#username')
+    .click()
+    .type(Cypress.env("username"));
+
+    cy.get('#password')
+    .click()
+    .type(Cypress.env("password"));
+
+    cy.get('.c6d7d2ace > .cd1df0865').click();
+
+    cy.wait(3000)
     cy.location("pathname", { timeout: 50000 })
-      .should("eq", "/")
-      .then(() => {
-        if (!cy.contains("From E2E test")) {
-          cy.log("API's limit reached!. Retryng in 2min");
-          setTimeout(() => {
-            window.location.reload();
-          }, 121000);
-        }
-      });
+    cy.should("eq", "/")
+    
+    cy.contains("From E2E test")
   });
 
-  // it("Create a task", () => {
-  //   cy.get(elements.tabNew).click();
-  //   cy.location('pathname', {timeout: 50000}).should('eq', '/tasks/new');
-  //   cy.get(elements.Title).type("From E2E test").should("have.value", "From E2E test")
-  //   cy.get(elements.Start).type("2021-10-10").should("not.have.value", "")
-  //   cy.get(elements.End).type("2021-10-10").should("not.have.value", "")
-  //   cy.get(elements.Dscr).type("Descrip. From E2E Text Extra-Large Test To Test Grid").should("not.have.value", "")
-  //   cy.get(elements.UserSl).click().should("have.lengthOf.at.least", 1);
-  //   cy.get(elements.User).click().should("not.have.value", "");
+  it("Create a task", () => {
+    cy.get(elements.tabNew).click();
+    cy.location('pathname', {timeout: 50000}).should('eq', '/tasks/new');
+    cy.get(elements.Title).type("From E2E test").should("have.value", "From E2E test")
+    cy.get(elements.Start).type("2021-10-10").should("not.have.value", "")
+    cy.get(elements.End).type("2021-10-10").should("not.have.value", "")
+    cy.get(elements.Dscr).type("Descrip. From E2E Text Extra-Large Test To Test Grid").should("not.have.value", "")
+    cy.get(elements.UserSl).click().should("have.lengthOf.at.least", 1);
+    cy.get(elements.User).click().should("not.have.value", "");
 
-  //   cy.get(elements.btnCreate).click();
+    cy.get(elements.btnCreate).click();
 
-  // });
+  });
 
   it("Search for task created previously", () => {
     cy.location("pathname", { timeout: 50000 }).should("eq", "/");
     cy.contains("From E2E test");
+    cy.wait(3000);
   });
 
   it("Look for the status of a task", () => {
     cy.location("pathname", { timeout: 50000 }).should("eq", "/");
     cy.get(elements.checked).should("have.prop", "checked").should("be.false");
+    cy.wait(3000);
+
   });
 
   it("Update a task", () => {
@@ -101,12 +98,13 @@ describe("Once A Upon A Time in... Load/Login", () => {
     .get(elements.update.dscr).type("E2E Updated Description").should("not.have.value", "")
 
     .get(elements.update.btnSave).click();
-
+    cy.wait(3000);
   });
 
   it("Mark a task as done!", () => {
     cy.get(
-      "#tasks-list-display > :nth-child(1) > .PrivateSwitchBase-root-18 > .MuiIconButton-label > .PrivateSwitchBase-input-21"
+      elements.update.checking
     ).click();
+    cy.wait(3000);
   });
 });
